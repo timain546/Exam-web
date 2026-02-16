@@ -18,4 +18,8 @@ $router->group('', function(Router $router) use ($app) {
     $router->get('/besoins/create', [ BesoinsController::class, 'showFormBesoins' ]);
     $router->post('/api/besoins/create', [ BesoinsController::class, 'showFormBesoins' ]);
 
+    $router->get('/dons/create', [DonsController::class, 'showFormDons']);
+    $router->post('/api/dons/create', [DonsController::class, 'createDons']);
+
+
 }, [ SecurityHeadersMiddleware::class ]);
