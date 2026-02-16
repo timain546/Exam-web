@@ -1,6 +1,7 @@
 <?php
 
 use app\controllers\TemplateController;
+use app\controllers\BesoinsController;
 use app\middlewares\SecurityHeadersMiddleware;
 use flight\Engine;
 use flight\net\Router;
@@ -14,6 +15,7 @@ use flight\net\Router;
 $router->group('', function(Router $router) use ($app) {
 
     $router->get('/', [ TemplateController::class, 'home' ]);
-    $router->get('/products', [ TemplateController::class, 'products' ]);
+    $router->get('/besoins/create', [ BesoinsController::class, 'showFormBesoins' ]);
+    $router->post('/api/besoins/create', [ BesoinsController::class, 'showFormBesoins' ]);
 
 }, [ SecurityHeadersMiddleware::class ]);
