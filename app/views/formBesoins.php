@@ -40,7 +40,7 @@
                   <span class="input-group-text"><span class="ri-building-line"></span></span>
                   <select id="id_ville" name="id_ville" class="form-select">
                     <?php foreach ($villes as $ville) { ?>
-                      <option value="<?= $ville['id'] ?>"><?= $ville['nom'] ?></option>
+                      <option value="<?= $ville['id_ville'] ?>"><?= $ville['nom'] ?></option>
                     <?php } ?>
                   </select>
                 </div>
@@ -53,7 +53,7 @@
                   <span class="input-group-text"><span id="uniteProduitSpan"></span> de</span>
                   <select id="id_produit" name="id_produit" class="form-select">
                     <?php foreach ($produits as $produit) { ?>
-                      <option value="<?= $produit['id'] ?>"><?= $produit['nom'] ?></option>
+                      <option value="<?= $produit['id_produit'] ?>"><?= $produit['nom'] ?></option>
                     <?php } ?>
                   </select>
                 </div>

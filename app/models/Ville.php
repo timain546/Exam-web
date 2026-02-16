@@ -9,8 +9,8 @@ class Ville{
     $this->pdo = $pdo;
   }
 
-  public function getAllVille(){
-    $stmt = $this->pdo->query("SELECT id_ville, name FROM bngrc_villes");
+  public function getAllVilles(){
+    $stmt = $this->pdo->query("SELECT id_ville, nom FROM bngrc_villes");
     return $stmt->fetchAll();
   }
 

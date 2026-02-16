@@ -4,11 +4,11 @@ document.addEventListener('DOMContentLoaded', () => {
     createBesoinForm.addEventListener('submit', (e) => {
         e.preventDefault();
         const formData = new FormData(createBesoinForm);
-        fetch('/api/besoins/create', {
+        fetch('api/besoins/create', {
             method: "POST",
             body: formData,
             headers: {
-              "Content-Type": "application/json",
+                "X-Requested-With": "XMLHttpRequest"
             },
         })
         .then(res => res.json())
