@@ -1,10 +1,18 @@
 <?php
 
 $navItems = [
-    ['url' => '', 'icon' => 'ri-home-fill', 'label' => 'Home'],
-    ['url' => 'products', 'icon' => 'ri-shopping-basket-2-fill', 'label' => 'Produits'],
-    ['separator' => true, 'label' => 'Section'],
-    ['url' => 'item', 'icon' => 'ri-square-fill', 'label' => 'Item'],
+    ['url' => '', 'icon' => 'ri-dashboard-fill', 'label' => 'Tableau de bord'],
+    ['url' => '', 'icon' => 'ri-layout-grid-fill', 'label' => 'Récapitulatif'],
+    ['separator' => true, 'label' => 'Besoins'],
+    ['url' => 'besoins/create', 'icon' => 'ri-add-fill', 'label' => 'Nouveau besoin'],
+    ['url' => '', 'icon' => 'ri-box-3-fill', 'label' => 'Besoins restants'],
+    ['separator' => true, 'label' => 'Dons'],
+    ['url' => 'dons/create', 'icon' => 'ri-add-fill', 'label' => 'Nouveau don'],
+    ['url' => '', 'icon' => 'ri-hand-heart-fill', 'label' => 'Dons restants'],
+    ['separator' => true, 'label' => 'Achats'],
+    ['url' => '', 'icon' => 'ri-exchange-fill', 'label' => 'Nouveau achat'],
+    ['separator' => true, 'label' => 'Dispatch'],
+    ['url' => '', 'icon' => 'ri-square-fill', 'label' => 'Simulation'],
 ];
 
 ?>
