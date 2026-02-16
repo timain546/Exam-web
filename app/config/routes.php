@@ -2,6 +2,7 @@
 
 use app\controllers\TemplateController;
 use app\controllers\BesoinsController;
+use app\controllers\DonsController;
 use app\middlewares\SecurityHeadersMiddleware;
 use flight\Engine;
 use flight\net\Router;
