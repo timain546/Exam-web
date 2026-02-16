@@ -48,7 +48,7 @@
               <div class="mb-3">
                 <label class="form-label">Produit</label>
                 <div class="input-group">
-                  <span class="input-group-text"><span class="ri--line"></span></span>
+                  <span class="input-group-text"><span class="ri-box-3-line"></span></span>
                   <input type="number" id="quantite" name="quantite" class="form-control">
                   <span class="input-group-text"><span id="uniteProduitSpan"></span> de</span>
                   <select id="id_produit" name="id_produit" class="form-select">
