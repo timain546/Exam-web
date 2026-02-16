@@ -7,7 +7,7 @@
       <span class="span ri-menu-fill"></span>
     </button>
 
-    <a class="fw-bold navbar-brand text-primary">MonApp</a>
+    <a class="fw-bold navbar-brand text-primary">MonBNGRC</a>
   </div>
 
   <div class="dropdown">

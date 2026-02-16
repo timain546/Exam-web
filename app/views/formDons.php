@@ -9,7 +9,7 @@
   <link rel="stylesheet" href="assets/css/bootstrap/bootstrap.min.css">
   <link rel="stylesheet" href="assets/css/remixicon/remixicon.css">
   <link rel="stylesheet" href="assets/css/style.css">
-  <title>BNGRC | Nouveau besoin</title>
+  <title>BNGRC | Nouveau don</title>
 </head>
 <body>
   <div class="d-flex container flex-column" style="height: 100vh;">
@@ -23,26 +23,15 @@
       <div id="mainDiv" class="d-flex flex-column flex-grow-1 overflow-auto">
         <!-- contenu principal -->
         <main class="flex-grow-1">
-          <header id="page-title">Nouveau besoin</header>
+          <header id="page-title">Nouveau don</header>
 
           <section class="island">
-            <form id="createBesoinForm">
+            <form id="createDonForm">
               <div class="mb-3">
                 <label class="form-label">Date</label>
                 <div class="input-group">
                   <span class="input-group-text"><span class="ri-calendar-line"></span></span>
-                  <input type="date" id="date_besoin" name="date_besoin" class="form-control">
-                </div>
-              </div>
-              <div class="mb-3">
-                <label class="form-label">Ville</label>
-                <div class="input-group">
-                  <span class="input-group-text"><span class="ri-building-line"></span></span>
-                  <select id="id_ville" name="id_ville" class="form-select">
-                    <?php foreach ($villes as $ville) { ?>
-                      <option value="<?= $ville['id_ville'] ?>"><?= $ville['nom'] ?></option>
-                    <?php } ?>
-                  </select>
+                  <input type="date" id="date_besoin" name="date_don" class="form-control">
                 </div>
               </div>
               <div class="mb-3">
@@ -71,6 +60,6 @@
 
 
   <script src="assets/js/bootstrap/bootstrap.bundle.min.js"></script>
-  <script src="assets/js/formBesoins.js"></script>
+  <script src="assets/js/formDons.js"></script>
 </body>
 </html>
