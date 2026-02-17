@@ -2,6 +2,7 @@
 namespace app\controllers;
 
 use app\models\Ville;
+use app\utils\Utils;
 use flight\Engine;
 
 class DashboardController {
@@ -24,5 +25,14 @@ class DashboardController {
             ];
         }
         $this->app->render('dashboard', ['villes' => $result]);
+    }
+
+    public function showReinit() {
+        $this->app->render('reinit');
+    }
+
+    public function reinit() {
+        Utils::reinitAll($this->app->db());
+        $this->app->json(['status' => 'ok']);
     }
 }
