@@ -2,11 +2,15 @@
 
 namespace app\models;
 
+use app\models\Besoins;
+
 class Dons{
   private $pdo;
+  private $besoin;
 
   public function __construct(\PDO $pdo){
     $this->pdo = $pdo;
+    $this->besoin = new Besoin($this->app->db());
   }
 
   public function create(array $input) {
@@ -15,16 +19,49 @@ class Dons{
   }
 
   public function getTotalDonsParProduit(){
-    $stmt = $this->pdo->prepare("SELECT id_produit, SUM(quantite) as quantite FROM bngrc_dons GROUP BY id_produit");
-    $stmt->execute();
-    return $stmt->fetchAll(\PDO::FETCH_ASSOC);
+        $stmt = $this->pdo->prepare("SELECT * FROM bngrc_v_dons_totaux");
+        $stmt->execute();
+        return $stmt->fetchAll(\PDO::FETCH_ASSOC);
   }
 
-  public function getAllDonsRestantsLib(){
-    $stmt = $this->pdo->prepare("SELECT id_produit,... ");
-    $stmt->execute();
-    return $stmt->fetchAll(\PDO::FETCH_ASSOC);
+  public function calculerDispatchParDate() {
+    $besoins = $this->besoin->getBesoinsTrierParDate();
+    $dons = $this->getTotalDonsParProduit();
+    $result = [];
+
+    foreach($besoins as $b) {
+      foreach($dons as $d) {
+        if($b['id_produit'] == $d['id_produit'] && $d['quantite_restante'] > 0) {
+          $result[] = [
+            'id_besoin' => $b['id_besoin'],
+            'quantite_restante' => $b['quantite_restante'] > $d['quantite_restante'] ? $b['quantite_restante'] - $d['quantite_restante'] : 0
+          ];
+          $d['quantite_restante'] = $b['quantite_restante'] > $d['quantite_restante'] ? 0 : $d['quantite_restante'] - $b['quantite_restante'];
+          break;
+        }
+      }
+    }
+    return $result;
   }
 
+  public function calculerDispatchParQuantiteMin() {
+    $besoins = $this->besoin->getBesoinsTrierParQuantiteMin();
+    $dons = $this->getTotalDonsParProduit();
+    $result = [];
+
+    foreach($besoins as $b) {
+      foreach($dons as $d) {
+        if($b['id_produit'] == $d['id_produit'] && $d['quantite_restante'] > 0) {
+          $result[] = [
+            'id_besoin' => $b['id_besoin'],
+            'quantite_restante' => $b['quantite_restante'] > $d['quantite_restante'] ? $b['quantite_restante'] - $d['quantite_restante'] : 0
+          ];
+          $d['quantite_restante'] = $b['quantite_restante'] > $d['quantite_restante'] ? 0 : $d['quantite_restante'] - $b['quantite_restante'];
+          break;
+        }
+      }
+    }
+    return $result;
+  }
 
 }
