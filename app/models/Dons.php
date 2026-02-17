@@ -15,9 +15,16 @@ class Dons{
   }
 
   public function getTotalDonsParProduit(){
-        $stmt = $this->pdo->prepare("SELECT id_produit, SUM(quantite) as quantite FROM bngrc_dons GROUP BY id_produit");
-        $stmt->execute();
-        return $stmt->fetchAll(\PDO::FETCH_ASSOC);
-    }
+    $stmt = $this->pdo->prepare("SELECT id_produit, SUM(quantite) as quantite FROM bngrc_dons GROUP BY id_produit");
+    $stmt->execute();
+    return $stmt->fetchAll(\PDO::FETCH_ASSOC);
+  }
+
+  public function getAllDonsRestantsLib(){
+    $stmt = $this->pdo->prepare("SELECT id_produit,... ");
+    $stmt->execute();
+    return $stmt->fetchAll(\PDO::FETCH_ASSOC);
+  }
+
 
 }
