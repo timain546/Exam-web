@@ -25,8 +25,8 @@ $router->group('', function(Router $router) use ($app) {
     $router->post('/api/dons/create', [DonsController::class, 'createDons']);
 
     $router->get('/dispatch/simulation', [DispatchController::class, 'showSimulation']);
-    $router->get('/api/dispatch/simulation', [DispatchController::class, 'getSimulation']);
-    $router->post('/api/dispatch/execute', [DispatchController::class, 'getSimulation']);
+    $router->get('/api/dispatch/simulation/@mode', [DispatchController::class, 'getSimulation']);
+    $router->post('/api/dispatch/execute', [DispatchController::class, 'dispatch']);
 
     $router->get('/reinit', [DashboardController::class, 'showReinit']);
     $router->post('/api/reinit', [DashboardController::class, 'reinit']);
