@@ -64,4 +64,79 @@ class Dons{
     return $result;
   }
 
+  public function calculerDispatchProportionnelle() {
+    $besoins_totaux = $this->besoin->getTotalBesoinsParProduitTouteVille();
+    $besoins = $this->besoin->getBesoinsTrierParQuantiteMin();
+    $dons = $this->getTotalDonsParProduit();
+
+    $proportions_besoins = [];
+    foreach ($besoins_totaux as $bt) {
+        $proportions_besoins[$bt['id_produit']] = 0;
+        foreach ($dons as $d) {
+            if ($bt['id_produit'] == $d['id_produit']) {
+                $proportions_besoins[$bt['id_produit']] = $d['quantite_restante'] / (double) $bt['quantite_totale'];
+                if ($proportions_besoins[$bt['id_produit']] > 1) {
+                    $proportions_besoins[$bt['id_produit']] = 1;
+                }
+            }
+        }
+    }
+
+    $dons_restants = [];
+    foreach ($dons as $d) {
+        $dons_restants[$d['id_produit']] = $d['quantite_restante'];
+    }
+
+    $result = [];
+    foreach ($besoins as $b) {
+        if ($proportions_besoins[$b['id_produit']] == 0) continue;
+
+        $don_attribue = $b['quantite_restante'] * $proportions_besoins[$b['id_produit']];
+        $result[] = [
+            'id_besoin' => $b['id_besoin'],
+            'quantite_restante' => $b['quantite_restante'] - (int) $don_attribue,
+            'decimal' => $don_attribue - (int) $don_attribue,
+            'id_produit' => $b['id_produit']
+        ];
+        $dons_restants[$b['id_produit']] -= $don_attribue;
+    }
+
+    usort($result, function($a, $b) { return $a['decimal'] - $b['decimal']; });
+
+    $result2 = [];
+    foreach ($result as $r) {
+        $r2 = [
+            'id_besoin' => $r['id_besoin'],
+            'quantite_restante' => $r['quantite_restante'],
+        ];
+
+        if ($r['decimal'] > 0) {
+            if ($dons_restants[$r['id_produit']] > 0) {
+                $dons_restants[$r['id_produit']]--;
+                $r2['quantite_restante']--;
+            }
+        }
+
+        $result2[] = $r2;
+    }
+
+    return $result2;
+  }
+
+    public function dispatch($mode) {
+        $besoins = [];
+        if($mode == 0)
+            $besoins = $this->calculerDispatchParDate();
+        else if($mode == 1)
+            $besoins = $this->calculerDispatchParQuantiteMin();
+        else if($mode == 2)
+            $besoins = $this->calculerDispatchProportionnelle();
+
+        $stt = $this->pdo->prepare('UPDATE bngrc_besoins SET quantite_restante = ? WHERE id_besoin = ?');
+        foreach ($besoins as $b) {
+            $stt->execute([$b['quantite_restante'], $b['id_besoin']]);
+        }
+
+        // TODO: et pour les dons?
+    }
 }

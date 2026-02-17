@@ -22,6 +22,12 @@ class Besoins {
         return $stmt->fetchAll(\PDO::FETCH_ASSOC);
     }
 
+    public function getTotalBesoinsParProduitTouteVille(){
+        $stmt = $this->pdo->prepare("SELECT id_produit, SUM(quantite_restante) as quantite_totale FROM bngrc_besoins GROUP BY id_produit");
+        $stmt->execute();
+        return $stmt->fetchAll(\PDO::FETCH_ASSOC);
+    }
+
     public function getBesoinsTrierParDate() {
         $stmt = $this->pdo->query('SELECT * FROM bngrc_besoins ORDER BY date_besoin ASC');
         return $stmt->fetchAll(\PDO::FETCH_ASSOC);

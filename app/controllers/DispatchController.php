@@ -34,4 +34,10 @@ class DispatchController {
             'besoins' => $besoins
         ]);
     }
+
+    public function dispatch() {
+        $mode = (int) $_POST['mode'] ?? 0;
+        $this->don->dispatch($mode);
+        $this->app->json(['status' => 'ok']);
+    }
 }
