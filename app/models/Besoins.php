@@ -31,4 +31,20 @@ class Besoins {
         $stmt = $this->pdo->query('SELECT * FROM bngrc_besoins ORDER BY quantite_restante ASC');
         return $stmt->fetchAll(\PDO::FETCH_ASSOC);
     }
+
+    public function getMontantsTotaux() {
+        $stmt = $this->app->db()->prepare("
+            SELECT
+              SUM(quantite*prix_unitaire) as besoin_total,
+              SUM(quantite_restante*prix_unitaire) as besoin_restant
+            FROM
+              bngrc_v_besoins_totaux
+            JOIN
+              bngrc_produits
+            ON
+              bngrc_v_besoins_totaux.id_produit = bngrc_produits.id_produit
+        ");
+        $stmt->execute();
+        return $stmt->fetchAll(\PDO::FETCH_ASSOC);
+    }
 }
