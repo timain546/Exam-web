@@ -1,10 +1,3 @@
-<?php
-
-$besoins = [
-];
-
-?>
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -62,8 +55,8 @@ $besoins = [
               <tbody>
                 <?php foreach ($besoins as $besoin) { ?>
                   <tr>
-                    <td><?= $besoin['ville'] ?></td>
-                    <td><?= $besoin['produit'] ?></td>
+                    <td><?= $besoin['nom_ville'] ?></td>
+                    <td><?= $besoin['nom_produit'] ?></td>
                     <td><?= $besoin['quantite_restante'] ?> <?= $besoin['unite_produit'] ?></td>
                     <td id="besoin-<?= $besoin['id_besoin'] ?>"
                         data-quantite="<?= $besoin['quantite'] ?>"

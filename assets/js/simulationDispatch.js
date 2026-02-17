@@ -8,11 +8,11 @@ document.addEventListener('DOMContentLoaded', () => {
             const td = document.getElementById('besoin-' + b.id_besoin);
             const quantite = td.dataset.quantite;
             const unite = td.dataset.unite;
-            const quantiteApresDispatch = td.querySelector('quantiteApresDispatch');
-            const quantiteDiff = td.querySelector('quantiteDiff');
+            const quantiteApresDispatch = td.querySelector('.quantiteApresDispatch');
+            const quantiteDiff = td.querySelector('.quantiteDiff');
 
-            quantiteApresDispatch.textContent = b.quantite;
-            quantiteDiff.textContent = (b.quantite_apres_dispatch - quantite) + ' ' + unite;
+            quantiteApresDispatch.textContent = b.quantite_restante;
+            quantiteDiff.textContent = (b.quantite_restante - quantite) + ' ' + unite;
         });
     }
 

@@ -12,7 +12,7 @@ class Besoins {
     }
 
     public function getAllBesoins() {
-        $stmt = $this->pdo->query('SELECT b.id_besoin, b.date_besoin, b.id_ville, b.id_produit, b.quantite, b.quantite_restante, p.unite FROM bngrc_besoins b JOIN bngrc_produits p ON b.id_produit = p.id_produit');
+        $stmt = $this->pdo->query('SELECT b.id_besoin, b.date_besoin, b.id_ville, v.nom as nom_ville, b.id_produit, b.quantite, b.quantite_restante, p.nom as nom_produit, p.unite as unite_produit FROM bngrc_besoins b JOIN bngrc_produits p ON b.id_produit = p.id_produit JOIN bngrc_villes v ON b.id_ville = v.id_ville');
         return $stmt->fetchAll(\PDO::FETCH_ASSOC);
     }
 
