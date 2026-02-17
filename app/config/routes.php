@@ -31,4 +31,6 @@ $router->group('', function(Router $router) use ($app) {
     $router->get('/reinit', [DashboardController::class, 'showReinit']);
     $router->post('/api/reinit', [DashboardController::class, 'reinit']);
 
+    $router->get('/api/recapitulatifs/besoins', [DashboardController::class, 'getRecapitulatifsBesoins']);
+
 }, [ SecurityHeadersMiddleware::class ]);
