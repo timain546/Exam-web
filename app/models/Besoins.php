@@ -11,8 +11,14 @@ class Besoins {
         $stt->execute([$input['date_besoin'], $input['id_ville'], $input['id_produit'], $input['quantite'], $input['quantite']]);
     }
 
+    public function find($id_besoin) {
+        $stt = $this->pdo->prepare('SELECT * FROM bngrc_besoins WHERE id_besoin = ?');
+        $stt->execute([$id_besoin]);
+        return $stt->fetch();
+    }
+
     public function getAllBesoins() {
-        $stmt = $this->pdo->query('SELECT b.id_besoin, b.date_besoin, b.id_ville, v.nom as nom_ville, b.id_produit, b.quantite, b.quantite_restante, p.nom as nom_produit, p.unite as unite_produit FROM bngrc_besoins b JOIN bngrc_produits p ON b.id_produit = p.id_produit JOIN bngrc_villes v ON b.id_ville = v.id_ville');
+        $stmt = $this->pdo->query("SELECT b.id_besoin, b.date_besoin, b.id_ville, v.nom as nom_ville, b.id_produit, b.quantite, b.quantite_restante, p.nom as nom_produit, p.unite as unite_produit FROM bngrc_besoins b JOIN bngrc_produits p ON b.id_produit = p.id_produit JOIN bngrc_villes v ON b.id_ville = v.id_ville WHERE p.nom != 'Argent'");
         return $stmt->fetchAll(\PDO::FETCH_ASSOC);
     }
 
@@ -46,5 +52,10 @@ class Besoins {
         ");
         $stmt->execute();
         return $stmt->fetchAll(\PDO::FETCH_ASSOC);
+    }
+
+    public function reduireQuantiteRestante($id_besoin, $quantite) {
+        $stt = $this->pdo->prepare('UPDATE bngrc_besoins SET quantite_restante = quantite_restante - ? WHERE id_besoin = ?');
+        $stt->execute([$quantite, $id_besoin]);
     }
 }
