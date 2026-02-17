@@ -39,7 +39,7 @@ class Besoins {
     }
 
     public function getMontantsTotaux() {
-        $stmt = $this->app->db()->prepare("
+        $stmt = $this->pdo->prepare("
             SELECT
               SUM(quantite*prix_unitaire) as besoin_total,
               SUM(quantite_restante*prix_unitaire) as besoin_restant
@@ -51,6 +51,6 @@ class Besoins {
               bngrc_v_besoins_totaux.id_produit = bngrc_produits.id_produit
         ");
         $stmt->execute();
-        return $stmt->fetchAll(\PDO::FETCH_ASSOC);
+        return $stmt->fetchAll(\PDO::FETCH_ASSOC)[0];
     }
 }

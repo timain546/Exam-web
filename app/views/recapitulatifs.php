@@ -25,20 +25,24 @@
         <main class="flex-grow-1">
           <header id="page-title">Récapitulatifs</header>
 
-            <section class="island">
-              <h3>Besoins totaux</h3>
-              <p><span id="besoinTotal"></span> Ar</p>
-            </section>
+          <section class="island">
+            <button type="button" id="refreshButton" class="btn btn-primary">Rafraîchir</button>
+          </section>
 
-            <section class="island">
-              <h3>Besoins satisfaits</h3>
-              <p><span id="besoinSatisfait"></span> Ar</p>
-            </section>
+          <section class="island">
+            <h3>Besoins totaux</h3>
+            <p><span id="besoinTotalSpan"></span> Ar</p>
+          </section>
 
-            <section class="island">
-              <h3>Besoins restants</h3>
-              <p><span id="besoinRestant"></span> Ar</p>
-            </section>
+          <section class="island">
+            <h3>Besoins satisfaits</h3>
+            <p><span id="besoinSatisfaitSpan"></span> Ar</p>
+          </section>
+
+          <section class="island">
+            <h3>Besoins restants</h3>
+            <p><span id="besoinRestantSpan"></span> Ar</p>
+          </section>
         </main>
         <!-- footer -->
         <?php include(__DIR__ . '/shared/footer.php'); ?>

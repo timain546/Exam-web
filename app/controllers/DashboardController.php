@@ -8,11 +8,13 @@ use flight\Engine;
 
 class DashboardController {
     private $app;
+    private $besoin;
     private $ville;
 
     public function __construct(Engine $app) {
         $this->app = $app;
         $this->ville = new Ville($this->app->db());
+        $this->besoin = new Besoins($this->app->db());
     }
 
     public function dashboard() {
@@ -38,8 +40,8 @@ class DashboardController {
     }
 
     public function getRecapitulatifsBesoins() {
-      Besoins::getMontantsTotaux($this->app->db());
-      $this->app->json(['besoin_total' => 'besion_total', 'besoin_restant' => 'besion_restant']);
+        $output = $this->besoin->getMontantsTotaux();
+        $this->app->json(['status' => 'ok', 'besoin_total' => $output['besoin_total'], 'besoin_restant' => $output['besoin_restant']]);
     }
 
     public function showRecapitulatifs() {
