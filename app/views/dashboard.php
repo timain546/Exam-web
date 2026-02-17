@@ -38,9 +38,9 @@
                 <?php foreach ($ville['produits'] as $produit) { ?>
                   <tr>
                     <td><?= $produit['nom'] ?></td>
-                    <td><?= $produit['besoin'] ?><?= $produit['unite'] ?></td>
-                    <td><?= $produit['don'] ?><?= $produit['unite'] ?></td>
-                    <td><?= $produit['besoin'] - $produit['don'] ?><?= $produit['unite'] ?></td>
+                    <td><?= $produit['besoin'] ?> <?= $produit['unite'] ?></td>
+                    <td><?= $produit['don'] ?> <?= $produit['unite'] ?></td>
+                    <td><?= $produit['besoin'] - $produit['don'] ?> <?= $produit['unite'] ?></td>
                   </tr>
                 <?php } ?>
               </table>
