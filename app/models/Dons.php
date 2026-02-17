@@ -24,6 +24,18 @@ class Dons{
         return $stmt->fetchAll(\PDO::FETCH_ASSOC);
   }
 
+  public function getTotalDonsPourUnProduit($id_produit) {
+    $stmt = $this->pdo->prepare("SELECT quantite_restante as total FROM bngrc_v_dons_totaux WHERE id_produit = ?");
+    $stmt->execute([$id_produit]);
+    return ($row = $stmt->fetch()) ? (int)$row['total'] : 0;
+  }
+
+  public function getTotalDonsArgent() {
+    $stmt = $this->pdo->query("SELECT SUM(d.quantite_restante) as total FROM bngrc_v_dons_totaux d JOIN bngrc_produits p ON d.id_produit = p.id_produit WHERE p.nom = 'Argent'");
+    $stmt->execute();
+    return ($row = $stmt->fetch()) ? (int)$row['total'] : 0;
+  }
+
   public function calculerDispatchParDate() {
     $besoins = $this->besoin->getBesoinsTrierParDate();
     $dons = $this->getTotalDonsParProduit();
