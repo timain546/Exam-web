@@ -22,7 +22,7 @@ CREATE TABLE IF NOT EXISTS bngrc_produits(
     id_produit INT AUTO_INCREMENT PRIMARY KEY,
     id_categorie INT NOT NULL,
     nom VARCHAR(255) NOT NULL,
-    unite INT NOT NULL,
+    unite VARCHAR(255) NOT NULL,
     prix_unitaire DECIMAL(10,2) NOT NULL,
     FOREIGN KEY (id_categorie) REFERENCES bngrc_categories(id_categorie)
 );
@@ -33,6 +33,7 @@ CREATE TABLE IF NOT EXISTS bngrc_besoins(
     id_ville INT NOT NULL,
     id_produit INT NOT NULL,
     quantite INT NOT NULL,
+    quantite_restante INT,
     FOREIGN KEY (id_ville) REFERENCES bngrc_villes(id_ville),
     FOREIGN KEY (id_produit) REFERENCES bngrc_produits(id_produit)
 );
@@ -42,5 +43,6 @@ CREATE TABLE IF NOT EXISTS bngrc_dons(
     date_don DATE NOT NULL,
     id_produit INT NOT NULL,
     quantite INT NOT NULL,
+    quantite_restante INT,
     FOREIGN KEY (id_produit) REFERENCES bngrc_produits(id_produit)
 );

@@ -2,6 +2,7 @@
 namespace app\controllers;
 
 use app\models\Ville;
+use app\utils\Utils;
 use flight\Engine;
 
 class DashboardController {
@@ -16,7 +17,7 @@ class DashboardController {
     public function dashboard() {
         $villes = $this->ville->getAllVilles();
         $result = [];
-        foreach($ville as $v) {
+        foreach($villes as $v) {
             $result[] = [
                 'id_ville' => $v['id_ville'],
                 'nom' => $v['nom'],
@@ -24,5 +25,14 @@ class DashboardController {
             ];
         }
         $this->app->render('dashboard', ['villes' => $result]);
+    }
+
+    public function showReinit() {
+        $this->app->render('reinit');
+    }
+
+    public function reinit() {
+        Utils::reinitAll($this->app->db());
+        $this->app->json(['status' => 'ok']);
     }
 }

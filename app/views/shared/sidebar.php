@@ -2,7 +2,7 @@
 
 $navItems = [
     ['url' => '', 'icon' => 'ri-dashboard-fill', 'label' => 'Tableau de bord'],
-    ['url' => '', 'icon' => 'ri-layout-grid-fill', 'label' => 'Récapitulatif'],
+    ['url' => 'recapitulatifs', 'icon' => 'ri-layout-grid-fill', 'label' => 'Récapitulatif'],
     ['separator' => true, 'label' => 'Besoins'],
     ['url' => 'besoins/create', 'icon' => 'ri-add-fill', 'label' => 'Nouveau besoin'],
     ['url' => '', 'icon' => 'ri-box-3-fill', 'label' => 'Besoins restants'],
@@ -12,7 +12,9 @@ $navItems = [
     ['separator' => true, 'label' => 'Achats'],
     ['url' => '', 'icon' => 'ri-exchange-fill', 'label' => 'Nouveau achat'],
     ['separator' => true, 'label' => 'Dispatch'],
-    ['url' => '', 'icon' => 'ri-square-fill', 'label' => 'Simulation'],
+    ['url' => 'dispatch/simulate', 'icon' => 'ri-square-fill', 'label' => 'Simulation'],
+    ['separator' => true, 'label' => 'Autres'],
+    ['url' => 'reinit', 'icon' => 'ri-delete-bin-5-fill', 'label' => 'Réinitialiser'],
 ];
 
 ?>
