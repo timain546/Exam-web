@@ -10,7 +10,7 @@ class Dons{
 
   public function __construct(\PDO $pdo){
     $this->pdo = $pdo;
-    $this->besoin = new Besoin($this->app->db());
+    $this->besoin = new Besoins($pdo);
   }
 
   public function create(array $input) {

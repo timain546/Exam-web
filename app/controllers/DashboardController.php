@@ -3,6 +3,7 @@ namespace app\controllers;
 
 use app\models\Ville;
 use app\utils\Utils;
+use app\models\Besoins;
 use flight\Engine;
 
 class DashboardController {
@@ -34,5 +35,15 @@ class DashboardController {
     public function reinit() {
         Utils::reinitAll($this->app->db());
         $this->app->json(['status' => 'ok']);
+    }
+
+    public function getRecapitulatifsBesoins() {
+      Besoins::getMontantsTotaux($this->app->db());
+      $this->app->json(['besoin_total' => 'besion_total', 'besoin_restant' => 'besion_restant']);
+    }
+
+    public function showRecapitulatifs() {
+        // $besoins = Besoins::getMontantsTotaux($this->app->db());
+        $this->app->render('recapitulatifs');
     }
 }
