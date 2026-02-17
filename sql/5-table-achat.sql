@@ -5,5 +5,5 @@ CREATE Table bngrc_achat(
     quantite INT NOT NULL,
     montant DECIMAL(10, 2) NOT NULL,
     taux DECIMAL(5, 2) NOT NULL,
-    FOREIGN KEY (id_besoin) REFERENCES bngrc_besoin(id_besoin)
+    FOREIGN KEY (id_besoin) REFERENCES bngrc_besoins(id_besoin)
 );
