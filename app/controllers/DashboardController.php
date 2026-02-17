@@ -43,7 +43,6 @@ class DashboardController {
     }
 
     public function showRecapitulatifs() {
-        // $besoins = Besoins::getMontantsTotaux($this->app->db());
         $this->app->render('recapitulatifs');
     }
 }
