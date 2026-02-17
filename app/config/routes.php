@@ -1,5 +1,6 @@
 <?php
 
+use app\controllers\AchatController;
 use app\controllers\DashboardController;
 use app\controllers\BesoinsController;
 use app\controllers\DonsController;
@@ -34,5 +35,7 @@ $router->group('', function(Router $router) use ($app) {
     $router->get('/api/recapitulatifs/besoins', [DashboardController::class, 'getRecapitulatifsBesoins']);
     $router->get('/recapitulatifs', [DashboardController::class, 'showRecapitulatifs']);
 
+    $router->get('/achat', [AchatController::class, 'showListeBesoins']);
+    $router->post('/api/achat/create/@id_besoin', [AchatController::class, 'createAchat']);
 
 }, [ SecurityHeadersMiddleware::class ]);

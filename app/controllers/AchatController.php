@@ -1,9 +1,9 @@
 <?php
 namespace app\controllers;
 
-use app\Besoins;
-use app\Dons;
-use app\Achat;
+use app\models\Besoins;
+use app\models\Dons;
+use app\models\Achat;
 use flight\Engine;
 
 class AchatController {
@@ -14,7 +14,7 @@ class AchatController {
 
     public function __construct(Engine $app) {
         $this->app = $app;
-        $this->besoin = new Besoin($this->app->db());
+        $this->besoin = new Besoins($this->app->db());
         $this->don = new Dons($this->app->db());
         $this->achat = new Achat($this->app->db());
     }
@@ -33,14 +33,16 @@ class AchatController {
                 'status' => 'error',
                 'message' => 'Vous avez encore des dons a donner'
             ]);
+            return;
         }
-        
+
         $quantite = (int)($_POST['quantite'] ?? 0);
         if($bs['quantite'] < $quantite) {
             $this->app->json([
                 'status' => 'error',
                 'message' => 'Vous avez une quantite beaucoup trop grande'
             ]);
+            return;
         }
 
         $input = [

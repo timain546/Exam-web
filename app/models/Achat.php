@@ -13,9 +13,9 @@ class Achat {
 
     public function __construct(\PDO $pdo) {
         $this->pdo = $pdo;
-        $this->don = new Dons($this->app->db());
-        $this->produit = new Produit($this->app->db());
-        $this->besoin = new Besoins($this->app->db());
+        $this->don = new Dons($pdo);
+        $this->produit = new Produit($pdo);
+        $this->besoin = new Besoins($pdo);
     }
 
     public function create(array $input) {
