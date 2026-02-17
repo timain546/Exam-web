@@ -16,9 +16,9 @@ INSERT INTO bngrc_categories (nom) VALUES
     ('Logistique');
 
 INSERT INTO bngrc_produits (id_categorie, nom, unite, prix_unitaire) VALUES
-    (1, 'Riz (sac 50kg)', 'kg', 75000.00),
-    (1, 'Lentilles (sac 25kg)', 'kg', 62000.00),
-    (2, 'Eau potable (bidon 20L)', 'L', 12000.00),
+    (1, 'Riz', 'kg', 75000.00),
+    (1, 'Lentilles', 'kg', 62000.00),
+    (2, 'Eau potable', 'L', 12000.00),
     (3, 'Kit de premiers secours', 'unites', 45000.00),
     (4, 'Tente familiale', 'unites', 250000.00),
     (5, 'Kit d''hygiène', 'unites', 28000.00);
