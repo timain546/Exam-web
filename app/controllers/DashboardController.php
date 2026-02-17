@@ -41,4 +41,9 @@ class DashboardController {
       Besoins::getMontantsTotaux($this->app->db());
       $this->app->json(['besoin_total' => 'besion_total', 'besoin_restant' => 'besion_restant']);
     }
+
+    public function showRecapitulatifs() {
+        // $besoins = Besoins::getMontantsTotaux($this->app->db());
+        $this->app->render('recapitulatifs');
+    }
 }
