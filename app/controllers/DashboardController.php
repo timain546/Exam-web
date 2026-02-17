@@ -16,7 +16,7 @@ class DashboardController {
     public function dashboard() {
         $villes = $this->ville->getAllVilles();
         $result = [];
-        foreach($ville as $v) {
+        foreach($villes as $v) {
             $result[] = [
                 'id_ville' => $v['id_ville'],
                 'nom' => $v['nom'],

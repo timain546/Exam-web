@@ -1,6 +1,6 @@
 <?php
 
-use app\controllers\TemplateController;
+use app\controllers\DashboardController;
 use app\controllers\BesoinsController;
 use app\controllers\DonsController;
 use app\middlewares\SecurityHeadersMiddleware;
@@ -15,7 +15,7 @@ use flight\net\Router;
 // This wraps all routes in the group with the SecurityHeadersMiddleware
 $router->group('', function(Router $router) use ($app) {
 
-    $router->get('/', [ TemplateController::class, 'home' ]);
+    $router->get('/', [ DashboardController::class, 'dashboard' ]);
     $router->get('/besoins/create', [ BesoinsController::class, 'showFormBesoins' ]);
     $router->post('/api/besoins/create', [ BesoinsController::class, 'createBesoins' ]);
 
