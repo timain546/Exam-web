@@ -14,7 +14,7 @@ $navItems = [
     ['separator' => true, 'label' => 'Dispatch'],
     ['url' => '', 'icon' => 'ri-square-fill', 'label' => 'Simulation'],
     ['separator' => true, 'label' => 'Action'],
-    ['url' => '', 'icon' => 'ri-danger-fill', 'label' => 'Réinitialiser'],
+    ['url' => '', 'icon' => '', 'label' => 'Réinitialiser'],
 ];
 
 ?>
