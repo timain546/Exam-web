@@ -10,7 +10,7 @@ $navItems = [
     ['url' => 'dons/create', 'icon' => 'ri-add-fill', 'label' => 'Nouveau don'],
     ['url' => '', 'icon' => 'ri-hand-heart-fill', 'label' => 'Dons restants'],
     ['separator' => true, 'label' => 'Achats'],
-    ['url' => '', 'icon' => 'ri-exchange-fill', 'label' => 'Nouveau achat'],
+    ['url' => '/achat', 'icon' => 'ri-exchange-fill', 'label' => 'Nouveau achat'],
     ['separator' => true, 'label' => 'Dispatch'],
     ['url' => 'dispatch/simulation', 'icon' => 'ri-square-fill', 'label' => 'Simulation'],
     ['separator' => true, 'label' => 'Autres'],
