@@ -13,6 +13,8 @@ $navItems = [
     ['url' => '', 'icon' => 'ri-exchange-fill', 'label' => 'Nouveau achat'],
     ['separator' => true, 'label' => 'Dispatch'],
     ['url' => '', 'icon' => 'ri-square-fill', 'label' => 'Simulation'],
+    ['separator' => true, 'label' => 'Action'],
+    ['url' => '', 'icon' => 'ri-square-fill', 'label' => 'Réinitialiser'],
 ];
 
 ?>
